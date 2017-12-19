@@ -1,0 +1,142 @@
+
+/*html { visibility:hidden; }*/
+*{
+  padding: 0;
+  margin: 0;
+}
+.ds-row {
+  overflow-x: hidden;
+    /*margin-left: -25px;*/
+}
+
+
+.ds-row > *{
+  min-height: 50px;
+  float: left;
+  display: inline-grid;
+  background: #ccc;
+  padding: 25px;
+  /*width: 100%;*/
+  width: auto;
+}
+
+[class*="ds-col-"], [class*="ds-grid-"] {
+  box-sizing: border-box;
+  width: auto;
+  /*width: 100%;*/
+}
+
+/*[class*="ds-col"]:last-of-type:after, [class*="ds-grid"]:last-of-type:after {
+  content: '';
+  display: block;
+  clear: both;
+}*/
+
+.ds-row > [class*="ds-grid-"]:last-of-type:after,
+.ds-row > [class*="ds-col-"]:last-of-type:after {
+  content: '';
+  display: block;
+  float: none;
+  clear: both;
+}
+
+.ds-row:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.ds-cover{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #fff;
+}
+
+.ds-float-right{
+  float: right !important;
+}
+.ds-float-left{
+  float: left !important;
+}
+
+
+
+.ds-row[class*="ds-same-height"]{
+  display: table;
+  width: 100%;
+}
+.ds-row[class*="ds-same-height"] > *{
+  float: none !important;
+  display: table-cell !important;
+}
+
+
+.ds-bg-black{
+  background: #000 !important;
+}
+
+.ds-bg-yellow{
+  background: yellow !important;
+}
+
+
+@media only screen and (min-width: 992px){
+  [class*="ds-col-xl"] {
+    width: 100% !important;
+    /*moz-float: none;*/
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+  [class*="ds-col-l"] {
+    width: 100% !important;
+    /*float: none;*/
+  }
+  .ds-row.ds-same-height-l{
+    display:block;
+  }
+  .ds-row.ds-same-height-l > *{
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
+  }
+}
+
+@media only screen  and (max-width: 768px){
+
+  [class*="ds-col-m"] {
+    width: 100% !important;
+    /*moz-float: none;*/
+  }
+
+  .ds-row.ds-same-height-m{
+    display:block;
+  }
+
+  .ds-row.ds-same-height-m > *{
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 479px){
+  [class*="ds-col-s"] {
+    width: 100% !important;
+    /*moz-float: none;*/
+  }
+
+  .ds-row.ds-same-height-s{
+    display:block;
+  }
+
+  .ds-row.ds-same-height-s > *{
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+}
