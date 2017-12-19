@@ -1,6 +1,14 @@
 # dui
 dui is a light weight dynamic front-end user interface framework developed in javascript and css.
 
+# Basic Usage
+Just add djs.js and dui.css files after jQuery.
+
+```HTML
+<script src="js/jquery3.min.js" ></script>
+<script src="dui/dui.js"></script>
+<link rel="stylesheet" href="dui/dui.css" media="screen" title="no title">
+```
 # Grid Usage
 Grid is created on percentage based. In the following example DUI automatically computes three columns with width 50%, 25%, 25% respectively. Define your own grid just by changing values after "ds-col-".
 ```HTML
