@@ -18,6 +18,7 @@
   padding: 25px;
   /*width: 100%;*/
   width: auto;
+  opacity: 0;
 }
 
 [class*="ds-col-"], [class*="ds-grid-"] {
@@ -25,12 +26,6 @@
   width: auto;
   /*width: 100%;*/
 }
-
-/*[class*="ds-col"]:last-of-type:after, [class*="ds-grid"]:last-of-type:after {
-  content: '';
-  display: block;
-  clear: both;
-}*/
 
 .ds-row > [class*="ds-grid-"]:last-of-type:after,
 .ds-row > [class*="ds-col-"]:last-of-type:after {
@@ -44,6 +39,11 @@
     content: '';
     display: block;
     clear: both;
+}
+
+.ds-panel{
+  padding: 25px;
+  background: #efefef;
 }
 
 .ds-cover{
@@ -61,8 +61,6 @@
 .ds-float-left{
   float: left !important;
 }
-
-
 
 .ds-row[class*="ds-same-height"]{
   display: table;
