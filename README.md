@@ -44,6 +44,17 @@ In following example, " ds-grid-s-100 ds-grid-m-50 ds-grid-33.33" column will be
   <div class="ds-col-m-33.333 ds-bg-black"> </div>
 </div>
 ```
+# The ds-cols directive
+By using ds-cols-<optional responsive element>-<width>, you can decide the column widths under ds-row main element. Useful in managing number of elements at once by declaring in parent ds-row element. Very useful in listing grid like gallery, catalogues, product list etc.
+In following example, "ds-cols-s-1 ds-cols-m-2 ds-cols-4" will make children div elements 4 columns in large format, 2 columns in tab format and 100% in short mobile format.
+```HTML
+<div class="ds-row ds-cols-s-1 ds-cols-m-2 ds-cols-4">
+  <div class=""> </div>
+  <div class="ds-bg-yellow"></div>
+  <div class=""> </div>
+  <div class="ds-bg-black"> </div>
+</div>
+```
 # Grid with Same height
 By adding "ds-same-height" class all columns will remain same height. By adding "m" and "s" elements you can decide at what view they can go 100% width.
 
