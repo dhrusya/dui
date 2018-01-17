@@ -16,9 +16,12 @@
   display: inline-grid;
   background: #ccc;
   padding: 25px;
-  /*width: 100%;*/
   width: auto;
   opacity: 0;
+}
+
+.ds-row[class*="ds-cols-"] > *{
+  padding: 0;
 }
 
 [class*="ds-col-"], [class*="ds-grid-"] {
