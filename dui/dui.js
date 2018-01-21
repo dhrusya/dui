@@ -21,6 +21,7 @@ var DUI={};
     DUI.grid=function(){
       $('.ds-row > [class*="ds-col-"]').each( function(i,val){
          var sty=$(this).attr("class").split(" ");
+
          DUI.setColWidth($(this),sty);
       });
       $('.ds-row > [class*="ds-grid-"]').each( function(i,val){
@@ -34,24 +35,34 @@ var DUI={};
     };
     DUI.setColsWidth=function(ob,arr){
       for(i=0;i<arr.length;i++){
-         var wt=DUI.getColsWidth(arr[i]);
          var cls=arr[i].toString().trim();
-         if(wt){
-           wt=parseInt(wt);
-           wt=DUI.round(100/wt,2);
-           ob=$(".ds-row > *");
-           DUI.setElWidth(ob,wt);
-           break;
+         if(cls.length>1){
+          var wt=DUI.getColsWidth(cls);
+          if(wt){
+            wt=parseInt(wt);
+            wt=DUI.round(100/wt,2);
+            console.log(ob.attr('class'));
+            alert(ob.attr('class'));
+           var kids=ob.children();  
+            ob=$(".ds-row > *");
+            DUI.setElWidth(kids,wt);
+            break;
+          }
          }
+         
       }
     };
     DUI.setColWidth=function(ob,arr){
       for(i=0;i<arr.length;i++){
-        var wt=DUI.getColWidth(arr[i]);
-        if(wt){
-          DUI.setElWidth(ob,wt);
-          break;
-        }
+        var cls=arr[i].toString().trim();
+        if(cls.length>1){
+          var wt=DUI.getColWidth(cls);
+          if(wt){
+            DUI.setElWidth(ob,wt);
+            break;
+          }
+        }        
+        
       }
     };
     DUI.setGridWidth=function(ob,arr){
@@ -77,34 +88,36 @@ var DUI={};
       if(!def) def="1"; //default
       var wt=false;
       sty=sty.toString().trim();
-      if(sty.indexOf(col+"s-") > -1){
-        if(DUI.$win.width()<=480) wt= sty.toString().substr(num);
-      }else if(sty.indexOf(col+"m-") > -1){
-        if(DUI.$win.width()<=768) wt=sty.toString().substr(num);
-      }else if(sty.indexOf(col+"l-") > -1){
-        if(DUI.$win.width()<=991) wt=sty.toString().substr(num);
-      }else if(sty.indexOf(col+"xl-") > -1){
-        if(DUI.$win.width()>=1280) wt=sty.toString().substr(num+1);
-      }else if(sty.indexOf(col+"") > -1){
-        wt=sty.toString().substr(num-2);
-      }
+        if(sty.indexOf(col+"s-") > -1){
+          if(DUI.$win.width()<=480) wt= sty.substr(num);
+        }else if(sty.indexOf(col+"m-") > -1){
+          if(DUI.$win.width()<=768) wt=sty.substr(num);
+        }else if(sty.indexOf(col+"l-") > -1){
+          if(DUI.$win.width()<=991) wt=sty.substr(num);
+        }else if(sty.indexOf(col+"xl-") > -1){
+          if(DUI.$win.width()>=1280) wt=sty.substr(num+1);
+        }else if(sty.indexOf(col+"") > -1){
+          wt=sty.substr(num-2);
+        }
+      
       return wt;
     };
 
     DUI.getColWidth=function(sty, col){
       if(!col) col="ds-col-";
       var wt=100;
-      if(sty.toString().indexOf(col+"s-") > -1){
-        if(DUI.$win.width()>479) wt= sty.toString().substr(9);
-      }else if(sty.toString().indexOf(col+"m-") > -1){
-        if(DUI.$win.width()>767) wt=sty.toString().substr(9);
-      }else if(sty.toString().indexOf(col+"l-") > -1){
-        if(DUI.$win.width()>991) wt=sty.toString().substr(9);
-      }else if(sty.toString().indexOf(col+"xl-") > -1){
-        if(DUI.$win.width()>=1280) wt=sty.toString().substr(10);
-      }else if(sty.toString().indexOf(col+"") > -1){
-        wt=sty.toString().substr(7);
-      }
+      sty=sty.toString().trim();      
+        if(sty.indexOf(col+"s-") > -1){
+          if(DUI.$win.width()>479) wt= sty.substr(9);
+        }else if(sty.indexOf(col+"m-") > -1){
+          if(DUI.$win.width()>767) wt=sty.substr(9);
+        }else if(sty.indexOf(col+"l-") > -1){
+          if(DUI.$win.width()>991) wt=sty.substr(9);
+        }else if(sty.indexOf(col+"xl-") > -1){
+          if(DUI.$win.width()>=1280) wt=sty.substr(10);
+        }else if(sty.indexOf(col+"") > -1){
+          wt=sty.substr(7);
+        }
       return wt;
     };
 
@@ -118,9 +131,14 @@ var DUI={};
     DUI.$doc.ready(function(){
       //alert("loaded in DUI");
       DUI.grid();
-      DUI.$win.resize(function(event) {
-        /* Act on the event */
-        DUI.grid();
+
+
+      var DUI_resize = false;
+      DUI.$win.resize(function(e) {
+          // console.log(true);
+          if (DUI_resize)
+              clearTimeout(DUI_resize);
+              DUI_resize = setTimeout(DUI.grid(), 1000);
       });
     });
 

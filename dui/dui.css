@@ -6,7 +6,13 @@
 }
 .ds-row {
   overflow-x: hidden;
-    /*margin-left: -25px;*/
+    margin-left: -30px;
+    display: -ms-flexbox;
+display: -webkit-flex;
+display: flex;
+-ms-flex-wrap: wrap;
+-webkit-flex-wrap: wrap;
+flex-wrap: wrap;
 }
 
 
@@ -15,13 +21,45 @@
   float: left;
   display: inline-grid;
   background: #ccc;
-  padding: 25px;
+   padding-left: 30px;
   width: auto;
   opacity: 0;
+  box-sizing: border-box;
 }
 
-.ds-row[class*="ds-cols-"] > *{
-  padding: 0;
+.ds-row.ds-gutter-small{
+  margin-left: -15px;
+}
+.ds-row.ds-gutter-small > *{
+  padding-left: 15px;
+}
+
+.ds-row.ds-gutter-medium{
+  margin-left: -30px;
+}
+.ds-row.ds-gutter-medium > *{
+  padding-left: 30px;
+}
+
+.ds-row.ds-gutter-large{
+  margin-left: -45px;
+}
+.ds-row.ds-gutter-large > *{
+  padding-left: 45px;
+}
+
+.ds-row.ds-gutter-xlarge{
+  margin-left: -60px;
+}
+.ds-row.ds-gutter-xlarge > *{
+  padding-left: 60px;
+}
+
+.ds-row.ds-gutter-none{
+  margin-left: 0px;
+}
+.ds-row.ds-gutter-none > *{
+  padding-left: 0;
 }
 
 [class*="ds-col-"], [class*="ds-grid-"] {
@@ -66,12 +104,18 @@
 }
 
 .ds-row[class*="ds-same-height"]{
-  display: table;
-  width: 100%;
+  /* display: table; */
+  /* width: 100%; */
 }
 .ds-row[class*="ds-same-height"] > *{
   float: none !important;
-  display: table-cell !important;
+  /* display: table-cell !important; */
+  display: -ms-flexbox;
+display: -webkit-flex;
+display: flex;
+-ms-flex-wrap: wrap;
+-webkit-flex-wrap: wrap;
+flex-wrap: wrap;
 }
 
 
